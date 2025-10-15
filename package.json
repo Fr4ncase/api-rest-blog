@@ -1,0 +1,50 @@
+{
+  "name": "api-rest-blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only -r tsconfig-paths/register src/server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "oxlint --deny-warnings --fix",
+    "format": "prettier --write \"src/**/*.{ts,js,json}\"",
+    "check": "npm run lint && npm run format"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/bcrypt": "6.0.0",
+    "@types/compression": "1.8.1",
+    "@types/cookie-parser": "1.4.9",
+    "@types/cors": "2.8.19",
+    "@types/express": "5.0.3",
+    "@types/jsdom": "^27.0.0",
+    "@types/jsonwebtoken": "9.0.10",
+    "@types/multer": "^2.0.0",
+    "oxlint": "1.18.0",
+    "prettier": "3.6.2",
+    "ts-node-dev": "2.0.0",
+    "tsconfig-paths": "4.2.0",
+    "typescript": "5.9.2"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cloudinary": "^2.7.0",
+    "compression": "1.8.1",
+    "cookie-parser": "1.4.7",
+    "cors": "2.8.5",
+    "dompurify": "^3.3.0",
+    "dotenv": "17.2.2",
+    "express": "5.1.0",
+    "express-rate-limit": "8.1.0",
+    "helmet": "8.1.0",
+    "jsdom": "^27.0.0",
+    "jsonwebtoken": "9.0.2",
+    "mongoose": "8.18.3",
+    "multer": "^2.0.2",
+    "winston": "3.18.3",
+    "zod": "4.1.11"
+  }
+}
