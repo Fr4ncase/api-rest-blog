@@ -14,8 +14,8 @@ import validationError from '@/middlewares/validationError';
 import {
   updateCurrentUserSchema,
   getAllUserSchema,
-  getUserById,
-  deleteUserById,
+  getUserByIdSchema,
+  deleteUserByIdSchema,
 } from '@/schemas/user_schema';
 
 const router = Router();
@@ -54,7 +54,7 @@ router.get(
   '/:userId',
   authenticate,
   authorize(['admin']),
-  validationError(getUserById, 'params'),
+  validationError(getUserByIdSchema, 'params'),
   getUser,
 );
 
@@ -62,7 +62,7 @@ router.delete(
   '/:userId',
   authenticate,
   authorize(['admin']),
-  validationError(deleteUserById, 'params'),
+  validationError(deleteUserByIdSchema, 'params'),
   deleteUser,
 );
 

@@ -104,10 +104,10 @@ const userIdSchema = z
     error: 'Invalid MongoDB ObjectId format',
   });
 
-export const getUserById = z.object({
+export const getUserByIdSchema = z.object({
   userId: userIdSchema,
 });
 
-export const deleteUserById = z.object({
+export const deleteUserByIdSchema = z.object({
   userId: userIdSchema,
 });
