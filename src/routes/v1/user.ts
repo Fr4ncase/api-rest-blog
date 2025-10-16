@@ -12,7 +12,7 @@ import authorize from '@/middlewares/authorize';
 import validationError from '@/middlewares/validationError';
 
 import {
-  updateCurrentUserSchema,
+  putCurrentUserSchema,
   getAllUserSchema,
   getUserByIdSchema,
   deleteUserByIdSchema,
@@ -31,7 +31,7 @@ router.put(
   '/current',
   authenticate,
   authorize(['admin', 'user']),
-  validationError(updateCurrentUserSchema),
+  validationError(putCurrentUserSchema),
   updateCurrentUser,
 );
 

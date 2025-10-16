@@ -87,12 +87,13 @@ const blogSchema = new Schema<IBlog>(
   },
 );
 
-blogSchema.pre('validate', function(next) {
-  if (this.title && !this.slug) {
+blogSchema.pre('validate', function (next) {
+  if (this.isModified('title')) {
+    this.slug = genSlug(this.title);
+  } else if (!this.slug) {
     this.slug = genSlug(this.title);
   }
-
   next();
-})
+});
 
 export default model<IBlog>('Blog', blogSchema);

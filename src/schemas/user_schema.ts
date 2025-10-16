@@ -34,7 +34,7 @@ const socialLinkSchema = z
   .max(100, { error: 'Url must be less than 100 characters' })
   .optional();
 
-export const updateCurrentUserSchema = z.object({
+export const putCurrentUserSchema = z.object({
   username: usernameSchema.refine(
     async (value) => {
       if (!value) return true;

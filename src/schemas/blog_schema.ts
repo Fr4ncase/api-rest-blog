@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { Types } from 'mongoose';
 
 const titleSchema = z
   .string({ error: 'Title is required' })
@@ -14,8 +15,24 @@ const statusSchema = z
   })
   .optional();
 
-export const blogSchema = z.object({
+export const postBlogSchema = z.object({
   title: titleSchema,
   content: contentSchema,
+  status: statusSchema,
+});
+
+export const getSlugSchema = z.object({
+  slug: z.string({ error: 'Slug is required' }).min(1),
+});
+
+export const getBlogIdSchema = z.object({
+  blogId: z.string().refine((value) => Types.ObjectId.isValid(value), {
+    error: 'Invalid MongoDB ObjectId format',
+  }),
+});
+
+export const putBlogSchema = z.object({
+  title: titleSchema.optional(),
+  content: contentSchema.optional(),
   status: statusSchema,
 });
