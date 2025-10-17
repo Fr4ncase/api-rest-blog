@@ -5,6 +5,7 @@ import authorize from '@/middlewares/authorize';
 import validationError from '@/middlewares/validationError';
 
 import likeBlog from '@/controllers/v1/like/like_blog';
+import unlikeBlog from '@/controllers/v1/like/unlike_blog';
 
 import { getBlogIdSchema } from '@/schemas/blog_schema';
 import { getUserByIdSchema } from '@/schemas/user_schema';
@@ -18,6 +19,15 @@ router.post(
   validationError(getBlogIdSchema, 'params'),
   validationError(getUserByIdSchema),
   likeBlog,
+);
+
+router.delete(
+  '/blog/:blogId',
+  authenticate,
+  authorize(['admin', 'user']),
+  validationError(getBlogIdSchema, 'params'),
+  validationError(getUserByIdSchema),
+  unlikeBlog,
 );
 
 export default router;
