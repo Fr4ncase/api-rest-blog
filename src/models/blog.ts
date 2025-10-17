@@ -88,10 +88,12 @@ const blogSchema = new Schema<IBlog>(
 );
 
 blogSchema.pre('validate', function (next) {
-  if (this.isModified('title')) {
-    this.slug = genSlug(this.title);
-  } else if (!this.slug) {
-    this.slug = genSlug(this.title);
+  if (this.title) {
+    if (this.isModified('title')) {
+      this.slug = genSlug(this.title);
+    } else if (!this.slug) {
+      this.slug = genSlug(this.title);
+    }
   }
   next();
 });

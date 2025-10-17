@@ -1,4 +1,4 @@
-import Router from 'express';
+import { Router } from 'express';
 import multer from 'multer';
 
 import createBlog from '@/controllers/v1/blog/create_blog';
