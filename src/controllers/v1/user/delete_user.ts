@@ -7,12 +7,9 @@ import Blog from '@/models/blog';
 
 import type { Request, Response } from 'express';
 
-const deleteCurrentUser = async (
-  req: Request,
-  res: Response,
-): Promise<void> => {
-  const userId = req.userId;
-
+const deleteUser = async (req: Request, res: Response): Promise<void> => {
+  const userId = req.params.userId;
+  
   try {
     const blogs = await Blog.find({ author: userId })
       .select('banner.publicId')
@@ -44,8 +41,8 @@ const deleteCurrentUser = async (
       message: 'Internal server error',
     });
 
-    logger.error('Error while deleting current user', err);
+    logger.error('Error while deleting a user', err);
   }
 };
 
-export default deleteCurrentUser;
+export default deleteUser;

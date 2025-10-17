@@ -50,7 +50,7 @@ const updateCurrentUser = async (
 
     await user.save();
 
-    logger.info('User update successfully', user);
+    logger.info('User updated successfully', user);
 
     res.status(200).json({
       user,
